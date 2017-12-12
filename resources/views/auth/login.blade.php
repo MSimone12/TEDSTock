@@ -1,5 +1,7 @@
 @extends('welcome')
 
+@section('titulo', 'TEDStock | Login')
+
 @section('content')
 <div class="container">
     <div class="row">
