@@ -1,0 +1,64 @@
+*{
+  font-family: 'Telefonica-Light', 'Arial', sans-serif;
+}
+input {
+  border-radius: 0 !important;
+  border: 2px solid #81DAAF !important;
+  height:
+}
+.input-group-btn, .btn-info {
+  border-radius: 0 !important;
+  border-color: #81DAAF !important;
+  background-color: #81DAAF  !important;
+}
+.input-group-btn:hover, .btn-info:hover {
+  border-radius: 0 !important;
+  border-color: #81DAAF !important;
+  background-color: #fff  !important;
+}
+.btn-info:hover {
+  color: #81DAAF !important;
+}
+.dropdown-ted{
+  min-width: 100% !important;
+  border-radius: 0 !important;
+  text-align: center !important;
+}
+.dropdown-ted a {
+  color: black;
+}
+
+.form-button {
+  background-image: -moz-linear-gradient( 66deg, rgb(0,255,128) 0%, rgb(0,188,206) 100%);
+  background-image: -webkit-linear-gradient( 66deg, rgb(0,255,128) 0%, rgb(0,188,206) 100%);
+  background-image: -ms-linear-gradient( 66deg, rgb(0,255,128) 0%, rgb(0,188,206) 100%);
+  border: 1px solid #81DAAF !important;
+  height: 60px;
+  font-size: 30px !important;
+  color: black !important;
+}
+
+/*
+  DEFININDO FONTFACES
+*/
+
+@font-face {
+	font-family: 'Telefonica-Bold';
+	src: url('../fonts/Telefonica-Bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+	font-family: 'Telefonica-Light';
+	src: url('../fonts/Telefonica-Light.ttf') format('truetype');
+  font-style: normal;
+  font-weight: lighter;
+}
+
+@font-face {
+	font-family: 'Telefonica-Regular';
+	src: url('../fonts/Telefonica-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
