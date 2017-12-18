@@ -11,11 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', ['as'=>'index', 'uses'=>'ImagensController@index']);
 
-Auth::routes();
+// Auth::routes();
 
+Route::post('/add', ['as'=>'adicionar', 'uses'=>'ImagensController@salvar']);
 Route::get('/home', 'HomeController@index');
 Route::get('/search', ['as'=>'busca', 'uses'=>'ImagensController@busca']);

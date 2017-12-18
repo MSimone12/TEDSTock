@@ -7,28 +7,33 @@ use App\Imagens;
 
 class ImagensController extends Controller
 {
+    public function index(){
+      return view('index');
+    }
     public function busca(Request $req) {
       $tag = $req->query('busca');
       $query = $req->query('busca');
-      $imagens = Imagens::where('tags','like',$tag);
+      $imagens = Imagens::where('tags',$tag);
       return view('pesquisa',compact('imagens'));
     }
     // public function adicionar(){
     //   return view('adicionar');
     // }
-    // public function salvar(Request $req){
-    //   $dados = $req->all();
-    //   if ($req->hasFile('imagem')) {
-    //     $imagem = $req->file('imagem');
-    //     $dir = "img/";
-    //     $name = $imagem->getClientOriginalName();
-    //     $imagem->move($dir, $name);
-    //     $dados['imagem'] = $dir.$name;
-    //   }
-    //   Imagens::create($dados);
-    //
-    //   return redirect()->route('index');
-    // }
+    public function salvar(Request $req){
+      $dados = $req->all();
+      // dd($dados);
+      if ($req->hasFile('imagem')) {
+        $imagem = $req->file('imagem');
+        $dir = "img/";
+        $name = $imagem->getClientOriginalName();
+        $imagem->move($dir, $name);
+        $dados['imagem'] = $dir.$name;
+      }
+      // dd($dados);
+      Imagens::create($dados);
+      // dd(Imagens::all());
+      return redirect()->route('index');
+    }
     // public function editar($id){
     //   $imagens = Imagens::find($id);
     //   return view('editar',compact('imagens'));

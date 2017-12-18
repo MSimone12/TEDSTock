@@ -4,7 +4,7 @@
 
 @section('content')
   <main style="background: url('img/fundo.png') no-repeat;background-size: cover;
-  height: 74.15%;width: 100%">
+  height: 72.24%;width: 100%">
     <div class="container">
       <!-- <img src="{{asset('img/fundo.png')}}" alt="" style="position:absolute;left:0px;top: 103px;" width="100%"> -->
       <form class="container col-12 text-center" action="{{route('busca')}}" method="get">

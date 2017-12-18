@@ -38,6 +38,23 @@ input {
   color: black !important;
 }
 
+#botaoAdicionar {
+  position: fixed;
+  bottom: 200px;
+  right: 50px;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  color: white;
+}
+
+#footerTed {
+  position: absolute;
+  bottom: 0;
+}
+ .card {
+   margin: 0 !important;
+ }
 /*
   DEFININDO FONTFACES
 */
