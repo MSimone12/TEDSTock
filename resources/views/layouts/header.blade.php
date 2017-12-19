@@ -19,31 +19,55 @@
     <body style="height: 100vh;">
       <script type="text/javascript">
       $(document).ready(function(){
+        $('.popup').hide();
+        $('#btnDownload').click(function(){
+          var id = $('input[name=inputId]').val();
+          console.log("cliquei no download");
+          $('.download').load('/download/'+id);
+        });
         $('#btnAdd').click(function(){
-          var nome = $('#add-form input[name=nome]').val();
-          var tags = $('#add-form input[name=tags]').val();
-          var imagem = $('#add-form input[name=imagem]').val();
-          var token = $('#add-form input[name=_token]').val();
-          // $.ajax({
-          //   url:"{{route('adicionar')}}",
-          //   type: "POST",
-          //   data: {
-          //     "_token": token,
-          //     "nome":nome,
-          //     "tags":tags,
-          //     "imagem":imagem
-          //   },
-          //   success: function(data){
-          //     alert(data[1]);
-          //   },
-          //   error: function(data){
-          //     console.log(data);
-          //   }
-          // });
-          // $('#load').load("{{route('adicionar')}}",
-          // {"nome":nome,"tags":tags,"imagem":imagem,"_token":token}
-          // );
-          $('#add-form').submit();
+          // console.log("oiiiii");
+            // event.preventDefault();
+            var formAdd = $('#form-add');
+            var formData = new FormData();
+            var nome = $('#add-form input[name=nome]').val();
+            var tags = $('#add-form input[name=tags]').val();
+            var imagem = document.getElementById('imagem');
+            var token = $('#add-form input[name=_token]').val();
+
+            // console.log(formData);
+            formData.append('imagem', imagem.files[0]);
+            formData.append('nome', nome);
+            formData.append('tags', tags);
+            formData.append('_token', token);
+            console.log(formData.getAll('_token'));
+            $.ajax({
+                url: "/add",
+                type: 'POST',
+                data: formData,
+                success: function (data) {
+                    alert("Sucesso")
+                    $('.modal').modal('toggle');
+                },
+                cache: false,
+                contentType: false,
+                processData: false,
+                xhr: function() {  // Custom XMLHttpRequest
+                    var myXhr = $.ajaxSettings.xhr();
+                    if (myXhr.upload) { // Avalia se tem suporte a propriedade upload
+                        myXhr.upload.addEventListener('progress', function () {
+                            /* faz alguma coisa durante o progresso do upload */
+                        }, false);
+                    }
+                return myXhr;
+                }
+            });
+            // // console.log(imagem);
+            // $('#load').load("{{route('adicionar')}}", formData);
+        });
+        $('.figure').click(function(){
+          var id = $(this).children('input[type=hidden]').val();
+          $('.popup').load('/img/'+id).toggle();
         });
       });
       </script>

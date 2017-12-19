@@ -13,8 +13,11 @@
 
 Route::get('/', ['as'=>'index', 'uses'=>'ImagensController@index']);
 
-// Auth::routes();
-
-Route::post('/add', ['as'=>'adicionar', 'uses'=>'ImagensController@salvar']);
 Route::get('/home', 'HomeController@index');
-Route::get('/search', ['as'=>'busca', 'uses'=>'ImagensController@busca']);
+
+Auth::routes();
+
+Route::post('/add', ['as'=>'adicionar', 'uses'=>'ImagensController@salvar'])->middleware('auth');
+Route::get('/search', ['as'=>'busca', 'uses'=>'ImagensController@busca'])->middleware('auth');
+Route::get('/img/{id}', ['as'=>'img', 'uses'=>'ImagensController@popup'])->middleware('auth');
+Route::get('/download/{id}', ['as'=>'download', 'uses'=>'ImagensController@downloadTipo'])->middleware('auth');

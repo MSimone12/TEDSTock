@@ -1,6 +1,45 @@
 *{
   font-family: 'Telefonica-Light', 'Arial', sans-serif;
 }
+main {
+  display: block;
+}
+.figure{
+  display: inline-block;
+  margin: 15px 25px !important;
+  height: 200px;
+  width: 300px;
+  max-width: 300px;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  line-height: 200px;
+  text-align: center !important;
+  cursor: pointer !important;
+  z-index: 1 !important;
+}
+.figure:hover {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  z-index: 1 !important;
+}
+.figure-img {
+  display: block;
+  margin: auto !important;
+  max-width: 300px !important;
+  overflow: hidden !important;
+}
+.popup {
+  border-width: 5px;
+  border-color: rgb(128, 217, 173);
+  border-style: solid;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  left: 18%;
+  top: 25%;
+  width: 1209px;
+  height: 514px;
+  z-index: 72;
+  overflow-y: hidden;
+}
 input {
   border-radius: 0 !important;
   border: 2px solid #81DAAF !important;
@@ -46,11 +85,6 @@ input {
   height: 50px;
   width: 50px;
   color: white;
-}
-
-#footerTed {
-  position: absolute;
-  bottom: 0;
 }
  .card {
    margin: 0 !important;

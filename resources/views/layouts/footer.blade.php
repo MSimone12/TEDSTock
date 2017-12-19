@@ -15,11 +15,11 @@
             </button>
           </div>
             <div class="modal-body">
-              <form id="add-form" method="post" action="{{route('adicionar')}}">
-                {{csrf_field()}}
+              <form id="add-form" method="post" enctype="multipart/form-data">
                 <input type="text" name="nome" value="" class="col-12" placeholder="Nome" style="margin-bottom: 5px;">
                 <input type="text" name="tags" value="" class="col-12" placeholder="Tags" style="margin-bottom: 5px;">
-                <input type="file" name="imagem" value="">
+                <input type="file" name="imagem" id="imagem" value="">
+                {{csrf_field()}}
               </form>
             </div>
             <div class="modal-footer">
@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <footer id="footerTed" class="col-12" style="background-color: #003e52;height:129px;">
+    <footer id="footerTed" class="col-12" style="background-color: #003e52;height:129px;display:block">
       <p style="color: white; text-align: center; line-height: 129px; height: 129px; margin: 0;">&copy; 2017 TEDStock. O design da TEDStock é uma marca comercial da Telefónica Educação Digital.</p>
     </footer>
     <div id="load">

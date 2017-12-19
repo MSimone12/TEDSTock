@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use App\Imagens;
 
 class ImagensController extends Controller
@@ -12,8 +13,7 @@ class ImagensController extends Controller
     }
     public function busca(Request $req) {
       $tag = $req->query('busca');
-      $query = $req->query('busca');
-      $imagens = Imagens::where('tags',$tag);
+      $imagens = Imagens::where('tags','like',"%$tag%")->get();
       return view('pesquisa',compact('imagens'));
     }
     // public function adicionar(){
@@ -22,6 +22,8 @@ class ImagensController extends Controller
     public function salvar(Request $req){
       $dados = $req->all();
       // dd($dados);
+      $file = $req->file('imagem');
+
       if ($req->hasFile('imagem')) {
         $imagem = $req->file('imagem');
         $dir = "img/";
@@ -29,10 +31,13 @@ class ImagensController extends Controller
         $imagem->move($dir, $name);
         $dados['imagem'] = $dir.$name;
       }
-      // dd($dados);
+      str_replace($dados['tags'], ' ', '%');
       Imagens::create($dados);
-      // dd(Imagens::all());
-      return redirect()->route('index');
+    }
+
+    public function popup(Request $req, $id){
+      $img = Imagens::find($id);
+      return view('popup', compact('img'));
     }
     // public function editar($id){
     //   $imagens = Imagens::find($id);
@@ -59,12 +64,13 @@ class ImagensController extends Controller
     //   $imagens = Imagens::find($id);
     //   return view('download',compact('imagens'));
     // }
-    // public function downloadTipo($id, $tipo){
-    //   $imagens = Imagens::find($id);
-    //   $caminho = $imagens->path.$tipo.'\\'.substr($imagens->imagem,4,-3).$tipo;
-    //   if (file_exists($caminho)) {
-    //     return response()->download($caminho, $imagens->nome.'.'.$tipo);
-    //   }else{
-    //     return redirect()->route('download', $id);
-    //   }
+    public function downloadTipo($id, $tipo){
+      $imagens = Imagens::find($id);
+      $caminho = $imagens->path.'\\png\\'.substr($imagens->imagem,4,-3).'png';
+      if (file_exists($caminho)) {
+        return response()->download($caminho, $imagens->nome.'.png');
+      }else{
+        return redirect()->route('download');
+      }
+    }
 }

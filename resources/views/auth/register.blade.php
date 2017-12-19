@@ -3,13 +3,13 @@
 @section('titulo', 'TEDStock | Registro')
 
 @section('content')
-<main class="col-12" style="background-image: url('img/background.png');height: 74.15vh">
+<main class="col-12" style="background-image: url('img/background.png');height: 74.15vh;background-repeat: no-repeat;background-size: cover;">
   <div class="container">
     <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <div class="col-12" style="background-color: white;height: 500px;width: 600px;margin: 5vh 20vw 0">
+      <div class="col">
+        <div class="col-12" style="background-color: white;height: 500px;width: 600px;margin: 5vh 25%">
 
-          <div class="col-12" style="font-size: 30px; font-weight: bold;margin-top:5%;">Login</div>
+          <div class="col-12" style="font-size: 30px; font-weight: bold;margin-top:5%;">Registre-se</div>
             <div class="col-12" style="font-size: 15px;">Já é registrado? <a href="{{url('/login')}}">Entrar</a></div>
             <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
               {{ csrf_field() }}
